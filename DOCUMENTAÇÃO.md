@@ -52,5 +52,18 @@ O cálculo  é realizado através da aplicação de uma média móvel  de  20 pe
 ##   Gravar arquivo
 
 import csv
-c = csv.writer(open("indicadores.csv", "wb"))
-c.writerow(["Timestamp","media-movel","bollinger-bandes","media-movel-exponencial",])
+
+```import csv
+
+with open('indicadores.csv','w', newline='') as csvfile:
+    fieldnames = ['timestamp','media-movel-exponencial','media-movel']
+
+    
+    thewriter =csv.DictWriter(csvfile,fieldnames=fieldnames)
+    
+    thewriter.writeheader()
+    
+    for i in range(1, len(ema_data)):
+        thewriter.writerow({'timestamp':ema_data.index[i],
+                           'media-movel-exponencial':ema_data.EMA[i],
+                            'media-movel':ema_data.MA[i]}) ```
